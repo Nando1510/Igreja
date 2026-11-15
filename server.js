@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ==========================================
 // CONFIGURAÇÃO DA SESSÃO
-@@ -31,59 +34,32 @@
+
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
@@ -85,7 +85,7 @@ app.get('/cadastro', (req, res) => {
 // ==========================================
 // CADASTRO DE MEMBROS
 // ==========================================
-@@ -210,9 +186,7 @@
+
 // ==========================================
 
 async function gerarCustomId() {
@@ -96,7 +96,7 @@ async function gerarCustomId() {
   return ultima ? ultima.customId + 1 : 1;
 }
 
-@@ -230,7 +204,6 @@
+
 
     const customId = await gerarCustomId();
 
@@ -104,7 +104,7 @@ async function gerarCustomId() {
     const administrador = new Administrador({
       customId,
       nome,
-@@ -298,10 +271,7 @@
+
 // ==========================================
 
 async function processarLoginAdmin(req, res) {
@@ -116,7 +116,7 @@ async function processarLoginAdmin(req, res) {
   const senha = String(req.body.senha ?? '');
 
   if (!usuario || !senha) {
-@@ -311,9 +281,7 @@
+
   }
 
   try {
@@ -127,7 +127,7 @@ async function processarLoginAdmin(req, res) {
 
     if (!administrador || administrador.senha !== senha) {
       return res.status(401).json({
-@@ -324,9 +292,7 @@
+
     req.session.regenerate((erro) => {
       if (erro) {
         console.error('Erro ao criar sessão:', erro);
@@ -138,7 +138,7 @@ async function processarLoginAdmin(req, res) {
       }
 
       req.session.adminId = administrador.customId;
-@@ -335,9 +301,7 @@
+
       req.session.save((erroSalvar) => {
         if (erroSalvar) {
           console.error('Erro ao salvar sessão:', erroSalvar);
@@ -149,7 +149,7 @@ async function processarLoginAdmin(req, res) {
         }
 
         return res.status(200).json({
-@@ -351,20 +315,15 @@
+
 
   } catch (error) {
     console.error('Erro no login do administrador:', error);
@@ -172,7 +172,7 @@ function verificarSessaoAdministrador(req, res) {
   return res.status(200).json({
     logado: logado,
     nome: logado ? req.session.adminNome : null
-@@ -421,21 +380,18 @@
+
   }
 });
 
@@ -199,7 +199,6 @@ const transporter = nodemailer.createTransport({
 app.post('/api/enviar-email', async (req, res) => {
   const { email, subject, message, link } = req.body;
 
-@@ -444,7 +400,7 @@
   }
 
   const mailOptions = {
@@ -208,7 +207,7 @@ app.post('/api/enviar-email', async (req, res) => {
     to: email,
     subject: subject,
     text: `${message}\n\nLink de acesso:\n${link}`,
-@@ -469,19 +425,17 @@
+
   }
 });
 
