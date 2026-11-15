@@ -972,7 +972,7 @@ export async function handleCreateChurch(event) {
     const resultado = await response.json();
 
     if (response.ok) {
-      alert('Igreja cadastrada com sucesso no MongoDB!');
+      alert('Igreja cadastrada com sucesso!!!');
       closeNewChurchModal();
       nameInput.value = '';
       cityInput.value = '';
