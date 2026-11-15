@@ -18,9 +18,7 @@ const PORT = process.env.PORT || 3000;
 // MIDDLEWARES
 // ==========================================
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 
 // ==========================================
 // CONFIGURAÇÃO DA SESSÃO
@@ -43,9 +41,12 @@ app.use(session({
 // CONEXÃO COM O MONGODB
 // ==========================================
 
-mongoose.connect('mongodb://localhost:27017/igreja')
-  .then(() => console.log('MongoDB conectado!'))
-  .catch(err => console.error('Erro na conexão:', err));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+// CONECTA O SERVIDOR NODE.JS AO BANCO DE DADOS MONGODB
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://nandohanauer01_db_user:mongoBanco25@cluster0.fbgabq9.mongodb.net/Formulario?retryWrites=true&w=majority';
 
 // ==========================================
 // ARQUIVOS ESTÁTICOS
