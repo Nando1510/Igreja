@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ==========================================
 // CONEXÃO COM O MONGODB ATLAS
 // ==========================================
-const mongoURI = process.env.MONGO_URI || 'mongodb+srv://nandohanauer01_db_user:mongoBanco25@cluster0.fbgabq9.mongodb.net/banco_Igreja?retryWrites=true&w=majority';
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://nandohanauer01_db_user:Mongodb25@cluster0.fbgabq9.mongodb.net/banco_Igreja?retryWrites=true&w=majority';
 
 // ==========================================
 // PÁGINAS (ROTA RAIZ)
