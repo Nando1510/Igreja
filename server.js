@@ -415,7 +415,10 @@ app.post('/api/enviar-email', async (req, res) => {
 // ==========================================
 // INICIALIZAÇÃO DO SERVIDOR E CONEXÃO MONGODB
 // ==========================================
-mongoose.connect(mongoURI)
+// ==========================================
+// INICIALIZAÇÃO DO SERVIDOR E CONEXÃO MONGODB
+// ==========================================
+mongoose.connect(mongoURI, { family: 4 })
   .then(() => {
     console.log('MongoDB Atlas conectado com sucesso!');
     app.listen(PORT, '0.0.0.0', () => {
