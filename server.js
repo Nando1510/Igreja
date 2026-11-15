@@ -421,14 +421,7 @@ app.post('/api/igrejas', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log('=================================');
-  console.log('Servidor IPB rodando com sucesso!');
-  console.log(`Início:   http://localhost:${PORT}/index/index.html`);
-  console.log(`Cadastro: http://localhost:${PORT}/cadastro`);
-  console.log(`Login-inicial: http://localhost:${PORT}/login_Inicio/login.html`)
-  console.log('=================================');
-});
+
 
 const nodemailer = require('nodemailer');
 
@@ -475,3 +468,20 @@ app.post('/api/enviar-email', async (req, res) => {
     res.status(500).json({ success: false, error: 'Erro ao conectar ou enviar o e-mail pelo servidor.' });
   }
 });
+
+
+
+
+// INICIA O SERVIDOR APÓS GARANTIR A CONEXÃO COM O MONGODB
+const PORT = process.env.PORT || 3000;
+
+mongoose.connect(mongoURI)
+  .then(() => {
+    console.log('MongoDB Atlas conectado com sucesso!');
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Servidor rodando na porta ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('Erro ao conectar ao MongoDB:', err);
+  });
