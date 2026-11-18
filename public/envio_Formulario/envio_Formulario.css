@@ -17,34 +17,6 @@ body {
     background-color: #04664d;
 }
 
-#titulo {
-    color: #ffffff;
-}
-
-#sub_Titulo {
-    color: #ffffff;
-}
-
-.custom-radio:checked + label {
-    border-color: #059669;
-    background-color: #ecfdf5;
-    color: #064e3b;
-}
-
-.custom-radio:checked + label .radio-indicator {
-    border-color: #059669;
-    background-color: #059669;
-}
-
-.custom-radio:checked + label .radio-indicator::after {
-    content: '';
-    display: block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: white;
-}
-
-@media print {
-    .no-print { display: none !important; }
+#titulo, #sub_Titulo {
+    color: #ffffff !important;
 }
